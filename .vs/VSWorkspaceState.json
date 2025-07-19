@@ -1,17 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.next\\static",
-    "\\.next\\static\\css",
-    "\\.next\\static\\css\\app",
-    "\\.next\\static\\development",
-    "\\.next\\static\\media",
-    "\\.next\\static\\webpack",
-    "\\.next\\static\\webpack\\app",
     "\\src",
     "\\src\\app",
     "\\src\\tests"
   ],
-  "SelectedNode": "\\src\\app\\page.tsx",
   "PreviewInSolutionExplorer": false
 }

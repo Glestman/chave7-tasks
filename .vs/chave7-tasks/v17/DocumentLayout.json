@@ -42,8 +42,7 @@
               "RelativeToolTip": "src\\app\\page.tsx",
               "ViewState": "AgIAABcAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-07-17T22:57:56.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T22:57:56.795Z"
             },
             {
               "$type": "Document",
@@ -53,7 +52,7 @@
               "RelativeDocumentMoniker": "src\\tests\\TaskList.test.tsx",
               "ToolTip": "C:\\Users\\usuario\\source\\repos\\chave7-tasks\\src\\tests\\TaskList.test.tsx",
               "RelativeToolTip": "src\\tests\\TaskList.test.tsx",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-07-17T22:57:36.147Z",
               "EditorCaption": ""
@@ -68,8 +67,7 @@
               "RelativeToolTip": "jest.config.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-07-17T22:52:02.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T22:52:02.108Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "tsconfig.json",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-17T22:47:33.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T22:47:33.658Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "jest.setup.ts",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-07-17T22:43:22.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T22:43:22.923Z"
             }
           ]
         }

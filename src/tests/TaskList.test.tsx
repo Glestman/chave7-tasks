@@ -8,5 +8,6 @@ test('renderiza lista', async () => {
       <HomePage />
     </MockedProvider>
   );
+ 
   expect(await screen.findByText('Gestão de Tarefas')).toBeInTheDocument();
 });
