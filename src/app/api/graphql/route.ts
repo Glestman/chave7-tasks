@@ -1,10 +1,9 @@
-// src/app/api/graphql/route.ts
+
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
-import { gql } from 'graphql-tag'; // Note que este é 'graphql-tag', não '@apollo/client'
+import { gql } from 'graphql-tag'; 
 
-// 1. Defina seu Schema GraphQL (Types e Resolvers)
-// Este é o mesmo schema que você usaria em um servidor GraphQL separado.
+
 const typeDefs = gql`
   type User {
     primeiroNome: String
@@ -30,12 +29,12 @@ const typeDefs = gql`
   }
 `;
 
-// 2. Implemente seus Resolvers (lógica para buscar/manipular dados)
+
 const resolvers = {
   Query: {
     tasks: (parent: any, { categoria, pegar }: { categoria?: string, pegar?: number }) => {
-      // **IMPORTANTE**: Aqui você conectaria com seu banco de dados REAL!
-      // Por enquanto, vamos usar dados mockados para demonstração.
+      // **IMPORTANTE**: Aqui você conectaria o banco de dados REAL!
+      // Por enquanto, como e um teste usarei dados mockados para demonstração.
       const allTasks = [
         {
           id: 'task-1',
@@ -64,16 +63,61 @@ const resolvers = {
           dtCriacao: new Date(Date.now() - 2 * 86400000).toISOString(), // Dois dias atrás
           user: { primeiroNome: 'Glestman', sobrenome: 'Dev' },
         },
+        {
+          id: 'task-4',
+          titulo: 'Compras',
+          descricao: 'Compra leite no supermercado.',
+          status: 'CONCLUIDO',
+          categoria: 'Pessoal',
+          dtCriacao: new Date(Date.now() - 2 * 86400000).toISOString(), // Dois dias atrás
+          user: { primeiroNome: 'Glestman', sobrenome: 'Dev' },
+        },
+        {
+          id: 'task-5',
+          titulo: 'Limpeza',
+          descricao: 'Ao chegar em casa fazer uma limpeza geral.',
+          status: 'PENDENTE',
+          categoria: 'Pessoal',
+          dtCriacao: new Date(Date.now() - 5 * 86400000).toISOString(), // Cinco dias atrás
+          user: { primeiroNome: 'Glestman', sobrenome: 'Dev' },
+        }, {
+          id: 'task-6',
+          titulo: 'Comida',
+          descricao: 'Pedi lanche no Ifood.',
+          status: 'CONCLUIDO',
+          categoria: 'Pessoal',
+          dtCriacao: new Date(Date.now() - 4 * 86400000).toISOString(), // Quatro dias atrás
+          user: { primeiroNome: 'Glestman', sobrenome: 'Dev' },
+        },
+        {
+          id: 'task-7',
+          titulo: 'Lazer',
+          descricao: 'Sair para passear com cachorro.',
+          status: 'CONCLUIDO',
+          categoria: 'Pessoal',
+          dtCriacao: new Date(Date.now() - 4 * 86400000).toISOString(), // Quatro dias atrás
+          user: { primeiroNome: 'João', sobrenome: 'Kleber' },
+        },
+        {
+          id: 'task-8',
+          titulo: 'Lazer com Esposa',
+          descricao: 'Levar esposa para comemorar aniversário.',
+          status: 'CONCLUIDO',
+          categoria: 'Pessoal',
+          dtCriacao: new Date(Date.now() - 10 * 86400000).toISOString(), // Dez dias atrás
+          user: { primeiroNome: 'Glestman', sobrenome: 'Dev' },
+        },
+
       ];
 
       let filteredTasks = allTasks;
       if (categoria && categoria !== 'Todos') {
         filteredTasks = allTasks.filter(task => task.categoria.toLowerCase() === categoria.toLowerCase());
       }
-      
+
       // Simula o "pegar" (take)
       if (pegar) {
-          filteredTasks = filteredTasks.slice(0, pegar);
+        filteredTasks = filteredTasks.slice(0, pegar);
       }
 
       return filteredTasks;
@@ -81,7 +125,7 @@ const resolvers = {
   },
   Mutation: {
     updateTaskStatus: (parent: any, { id, status }: { id: string, status: string }) => {
-      // **IMPORTANTE**: Aqui você atualizaria o status no seu banco de dados REAL!
+      // **IMPORTANTE**: Aqui você atualizaria o status do banco de dados REAL!
       // Para demonstração, vamos simular a atualização.
       console.log(`Atualizando status da tarefa ${id} para ${status}`);
       // Em uma aplicação real, você buscaria a tarefa no DB, atualizaria e retornaria.

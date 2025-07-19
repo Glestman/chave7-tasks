@@ -3,7 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\tests"
+    "\\src\\components",
+    "\\src\\components\\layout",
+    "\\src\\types"
   ],
+  "SelectedNode": "\\src\\components\\layout\\Container.tsx",
   "PreviewInSolutionExplorer": false
 }

@@ -1,6 +1,6 @@
 // src/components/layout/TaskList.tsx
 
-import { TaskCard } from 'app/components/TaskCard';
+import { TaskCard } from './TaskCard';
 
 interface Usuario {
   primeiroNome: string;

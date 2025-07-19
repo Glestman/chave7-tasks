@@ -15,6 +15,7 @@ export const typeDefs = gql`
     dtCriacao: String!
     user: Usuario!
   }
+  
 
   type Query {
     tasks(categoria: String, pegar: Int): [Tarefa!]!
@@ -22,5 +23,13 @@ export const typeDefs = gql`
 
   type Mutation {
     updateTaskStatus(id: String!, status: String!): Tarefa
+  createTask(
+    titulo: String!
+    descricao: String
+    status: String!
+    categoria: String!
+    userPrimeiroNome: String!
+    userSobrenome: String!
+  ): Tarefa
   }
 `;

@@ -7,7 +7,7 @@ import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/layout/Container';
 import { TaskList } from '../components/layout/TaskList';
 import { TaskForm } from '../components/layout/TaskForm';
-import { TaskCard } from './components/TaskCard';
+import { TaskCard } from '../components/layout/TaskCard';
 
 const GET_TASKS = gql`
   query Tasks($categoria: String, $pegar: Int) {
@@ -26,10 +26,10 @@ const GET_TASKS = gql`
   }
 `;
 
-// Em projeto real, esta mutation estaria em: src/graphql/mutations/createTask.ts
-const CREATE_TASK  = gql`
-  mutation CreateTask($titulo: String!, $descricao: String, $categoria: String!) {
-    createTask(titulo: $titulo, descricao: $descricao, categoria: $categoria) {
+
+const CREATE_TASK = gql`
+  mutation CreateTask($input: CreateTaskInput!) {
+    createTask(input: $input) {
       id
       titulo
       descricao
@@ -79,9 +79,14 @@ export default function HomePage() {
           onSave={(tarefa) =>
             createTask({
               variables: {
-                titulo: tarefa.titulo,
-                descricao: tarefa.descricao,
-                categoria: tarefa.categoria,
+                input: {
+                  titulo: tarefa.titulo,
+                  descricao: tarefa.descricao,
+                  categoria: tarefa.categoria,
+                  status: 'PENDENTE',
+                  userPrimeiroNome: 'Ramon',
+                  userSobrenome: 'Glestman',
+                },
               },
             })
           }
