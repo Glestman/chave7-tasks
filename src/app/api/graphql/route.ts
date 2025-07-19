@@ -1,42 +1,10 @@
-
+// src/app/api/graphql/route.ts
+import { NextRequest } from 'next/server';
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
-import { gql } from 'graphql-tag'; 
-import type { NextRequest } from 'next/server';
+import { gql } from 'graphql-tag';
 
-
-const typeDefs = gql`
-  type User {
-    primeiroNome: String
-    sobrenome: String
-  }
-
-  type Task {
-    id: ID!
-    titulo: String!
-    descricao: String
-    status: String!
-    categoria: String!
-    dtCriacao: String!
-    user: User!
-  }
-
-  type Query {
-    tasks(categoria: String, pegar: Int): [Task!]!
-  }
-
-  type Mutation {
-    updateTaskStatus(id: String!, status: String!): Task!
-  }
-`;
-
-
-const resolvers = {
-  Query: {
-    tasks: (_: any, { categoria, pegar }: { categoria?: string, pegar?: number }) => {
-      // **IMPORTANTE**: Aqui você conectaria o banco de dados REAL!
-      // Por enquanto, como e um teste usarei dados mockados para demonstração.
-      const allTasks = [
+let allTasks = [
         {
           id: 'task-1',
           titulo: 'Configurar GraphQL API Route',
@@ -110,7 +78,40 @@ const resolvers = {
         },
 
       ];
+// Define o schema GraphQL
+const typeDefs = gql`
+  type User {
+    primeiroNome: String
+    sobrenome: String
+  }
 
+  type Task {
+    id: ID!
+    titulo: String!
+    descricao: String
+    status: String!
+    categoria: String!
+    dtCriacao: String!
+    user: User!
+  }
+
+  type Query {
+    tasks(categoria: String, pegar: Int): [Task!]!
+  }
+
+  type Mutation {
+    updateTaskStatus(id: String!, status: String!): Task!
+    createTask(titulo: String!, descricao: String, categoria: String!): Task!
+  }
+`;
+
+
+
+// Resolvers
+const resolvers = {
+  Query: {
+    tasks: (_: any, { categoria, pegar }: { categoria?: string, pegar?: number }) => {
+      
       let filteredTasks = allTasks;
       if (categoria && categoria !== 'Todos') {
         filteredTasks = allTasks.filter(task => task.categoria.toLowerCase() === categoria.toLowerCase());
@@ -125,23 +126,32 @@ const resolvers = {
     },
   },
   Mutation: {
-    updateTaskStatus: (_: any, { id, status }: { id: string, status: string }) => {
-      // **IMPORTANTE**: Aqui você atualizaria o status do banco de dados REAL!
-      // Para demonstração, vamos simular a atualização.
-  
-      // Em uma aplicação real, você buscaria a tarefa no DB, atualizaria e retornaria.
-      return { id, status }; // Retorna a tarefa com o novo status
+    updateTaskStatus: (_: any, { id, status }: any) => {
+      const task = allTasks.find((t) => t.id === id);
+      if (task) task.status = status;
+      return task;
+    },
+    createTask: (_: any, { titulo, descricao, categoria }: any) => {
+      const novaTarefa = {
+        id: Date.now().toString(36),
+        titulo,
+        descricao: descricao || '',
+        status: 'PENDENTE',
+        categoria,
+        dtCriacao: new Date().toISOString(),
+        user: { primeiroNome: 'Glestman', sobrenome: 'Dev' },
+      };
+      allTasks.push(novaTarefa);
+      return novaTarefa;
     },
   },
 };
 
-// 3. Crie a instância do Apollo Server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-// 4. Crie o handler para a API Route do Next.js
 const handler = startServerAndCreateNextHandler<NextRequest>(server);
 
 export const GET = handler;
