@@ -141,8 +141,5 @@ const server = new ApolloServer({
 });
 
 // 4. Crie o handler para a API Route do Next.js
-const handler = startServerAndCreateNextHandler(server, {
-  context: async (req, res) => ({ req, res }), // Você pode adicionar contexto aqui (autenticação, etc.)
-});
-
-export { handler as GET, handler as POST };
+export const GET = startServerAndCreateNextHandler(server);
+export const POST = startServerAndCreateNextHandler(server);
