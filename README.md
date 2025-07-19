@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Projeto: chave7-tasks
 
-## Getting Started
+Aplicação de gerenciamento de tarefas desenvolvida com **Next.js 15**, **GraphQL** e **Tailwind CSS**. Criada como parte de um teste técnico, a aplicação foca em boas práticas de arquitetura, responsividade e testes automatizados.
 
-First, run the development server:
+---
+
+## 🌐 Link da Aplicação Publicada
+
+🔗 **Deploy na Vercel:** [https://chave7-tasks.vercel.app](https://chave7-tasks.vercel.app)
+
+---
+
+## 🧩 Tecnologias Utilizadas
+
+- **Next.js 15 (App Router)**
+- **TypeScript**
+- **GraphQL (Apollo Server & Client)**
+- **Tailwind CSS**
+- **Jest & React Testing Library**
+
+---
+
+## 💻 Instruções para Rodar Localmente
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 1. Clone o repositório
+$ git clone https://github.com/Glestman/chave7-tasks.git
+$ cd chave7-tasks
+
+# 2. Instale as dependências
+$ npm install
+
+# 3. Inicie o ambiente de desenvolvimento
+$ npm run dev
+
+# Acesse a aplicação em:
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📁 Endpoint local do Apollo GraphQL
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000/api/graphql
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧪 Instruções para Executar os Testes
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Executar testes com Jest
+$ npx jest src/tests/TaskList.test.tsx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Certifique-se de que o ambiente esteja configurado com `ts-jest` e `tsconfig.jest.json`, caso esteja utilizando TypeScript.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✨ Abordagem e Diferenciais
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Arquitetura Modular:** Separacão clara entre componentes, layouts e lógica GraphQL.
+- **API com Apollo Server:** Implementada via App Router (`app/api/graphql/route.ts`).
+- **UI Responsiva:** Estilização moderna com Tailwind CSS.
+- **Testes Automatizados:** Testes com Jest e React Testing Library.
+- **Publicação com Vercel:** Deploy simplificado e contínuo via GitHub.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📌 Repositório no GitHub
+
+🔗 [https://github.com/Glestman/chave7-tasks](https://github.com/Glestman/chave7-tasks)
+
+---
+
+Feito com 💡 por **Ramon Glestman**
