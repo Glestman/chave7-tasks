@@ -2,6 +2,7 @@
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { gql } from 'graphql-tag'; 
+import type { NextRequest } from 'next/server';
 
 
 const typeDefs = gql`
@@ -32,7 +33,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    tasks: (parent: any, { categoria, pegar }: { categoria?: string, pegar?: number }) => {
+    tasks: (_: any, { categoria, pegar }: { categoria?: string, pegar?: number }) => {
       // **IMPORTANTE**: Aqui você conectaria o banco de dados REAL!
       // Por enquanto, como e um teste usarei dados mockados para demonstração.
       const allTasks = [
@@ -124,10 +125,10 @@ const resolvers = {
     },
   },
   Mutation: {
-    updateTaskStatus: (parent: any, { id, status }: { id: string, status: string }) => {
+    updateTaskStatus: (_: any, { id, status }: { id: string, status: string }) => {
       // **IMPORTANTE**: Aqui você atualizaria o status do banco de dados REAL!
       // Para demonstração, vamos simular a atualização.
-      console.log(`Atualizando status da tarefa ${id} para ${status}`);
+  
       // Em uma aplicação real, você buscaria a tarefa no DB, atualizaria e retornaria.
       return { id, status }; // Retorna a tarefa com o novo status
     },
@@ -141,5 +142,7 @@ const server = new ApolloServer({
 });
 
 // 4. Crie o handler para a API Route do Next.js
-export const GET = startServerAndCreateNextHandler(server);
-export const POST = startServerAndCreateNextHandler(server);
+const handler = startServerAndCreateNextHandler<NextRequest>(server);
+
+export const GET = handler;
+export const POST = handler;

@@ -4,10 +4,10 @@
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
-import React from 'react'; 
+import React from 'react';
 
-// 3. Importa a instância do cliente Apollo que você JÁ DEFINIU
-import { apolloClient } from '@/lib/apolloClient'; 
+
+import { apolloClient } from '@/lib/apolloClient';
 
 // 4. Define o componente funcional ApolloWrapper
 export function ApolloWrapper({ children }: { children: React.ReactNode }) {
