@@ -147,12 +147,17 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+const server = new ApolloServer({ typeDefs, resolvers });
 
 const handler = startServerAndCreateNextHandler<NextRequest>(server);
 
-export const GET = handler;
-export const POST = handler;
+export async function GET(req: NextRequest) {
+  return handler(req);
+}
+
+export async function POST(req: NextRequest) {
+  return handler(req);
+}
+
+
+
