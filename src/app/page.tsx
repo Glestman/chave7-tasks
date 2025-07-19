@@ -27,7 +27,7 @@ const GET_TASKS = gql`
 `;
 
 // Em projeto real, esta mutation estaria em: src/graphql/mutations/createTask.ts
-const CREATE_TASK = gql`
+const CREATE_TASK  = gql`
   mutation CreateTask($titulo: String!, $descricao: String, $categoria: String!) {
     createTask(titulo: $titulo, descricao: $descricao, categoria: $categoria) {
       id
@@ -50,8 +50,7 @@ const UPDATE_TASK = gql`
       id
       status
     }
-  }
-`;
+  }`;
 
 export default function HomePage() {
   const [categoria, setCategoria] = useState('Todos');
